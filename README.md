@@ -18,7 +18,7 @@
 # Example Usage
 
 ```js
-const {Webhook} = require('../Webhook');
+const {Webhook} = require('simple-discord-webhooks');
 
 const webhook = new Webhook('https://discord.com/api/webhooks/820304489637871657/QPZWXNS6wUsQ7iKA-Sm7YDIODCbxk60WNeRDoPtEOxZaMvlqbrM_1LQ_LVZHMNhbdz6N');
 

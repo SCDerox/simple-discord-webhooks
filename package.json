@@ -1,6 +1,7 @@
 {
   "name": "simple-discord-webhooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "main": "Webhook.js",
   "description": "Very simple package to send, edit and delete Discord Webhook Messages",
   "scripts": {
     "test": "node test/test.js"
