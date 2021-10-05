@@ -1,0 +1,28 @@
+{
+  "templates": {
+    "meta": {
+      "title": "simple-discord-webhooks Documentation"
+    },
+    "default": {
+      "includeDate": false
+    },
+    "applicationName": "simple-discord-webhooks"
+  },
+  "source": {
+    "include": [
+      "."
+    ],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules|docs)"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "opts": {
+    "encoding": "utf8",
+    "destination": "./docs",
+    "recurse": true,
+    "readme": "./README.md",
+    "template": "./node_modules/@pixi/jsdoc-template"
+  }
+}
