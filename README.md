@@ -7,13 +7,18 @@
 * Send webhook messages
 * Edit webhook messages
 * Delete webhook messages
-* Support for custom avatarUrl and username
+* Fetch webhook messages
+* Delete and edit webhooks
+* Support for custom avatarUrl and username per message
 * Support for [Embed-Objects](https://discord.com/developers/docs/resources/channel#embed-object)
 * Support for [Allowed-Mentions-Object](https://discord.com/developers/docs/resources/channel#allowed-mentions-object)
+* Support for [Message-Component-Object](https://discord.com/developers/docs/interactions/message-components#component-object). ⚠ This will only work, if your webhook is owned by an application. 
 
 # Install from [NPM](https://www.npmjs.com/package/simple-discord-webhooks)
 
 `$ npm i simple-discord-webhooks --save`
+
+## Changelog
 
 # Example Usage
 
@@ -47,13 +52,25 @@ message.edit('Hello there!').then(() => console.log('Edited message'))
         * allowedMentions (object, optional):
           A [Allowed-Mentions-Object](https://discord.com/developers/docs/resources/channel#allowed-mentions-object)
         * tts (boolean, optional): Set to `true` to enable TTS.
+        * components (array, optional): Array
+          of [message components](https://discord.com/developers/docs/interactions/message-components#component-object).
+          ⚠ This will only work, if your webhook is owned by an application.
         * Returns `Promise<Message>` (with all the values
           from [here](https://discord.com/developers/docs/resources/channel#message-object))
+    * function `edit(name = null, base64Avatar = null)` - Edits the webhook object
+        * name (string, optional): New username of the webhook
+        * base64Avatar (base64String (string), optional): [Base64](https://en.wikipedia.org/wiki/Base64) -String of your
+          image. If you don't know how to use this, please google `Image to Base64 nodejs` or `File to Base 64` if you
+          have an image file.
+    * function `fetchMessage(id)` - Fetches a message. Includes content and all parameters returned by Discord.
+        * id(string): ID of a message send by this webhook
+        * Returns `Message`
+    * function `delete()` - Deletes the webhook. Use with caution.
     * function `resolveMessageID(messageID)` - Returns a MessageObject of a Message-ID
         * messageID(string): ID of a message send by this webhook
         * Returns `Message`
         * NOTE: You can only get a `Message`-Object with to edit and delete the message - You can not (!) get the
-          content of it.
+          content of it. Use `fetchMessage(id)` if you want to fetch content too.
 
 * Class: `Message(messageData, webhookurl)`
     * `messageData` (object) has to have a value called `id` with the id of the message in it
@@ -65,6 +82,10 @@ message.edit('Hello there!').then(() => console.log('Edited message'))
           of [Embed-Objects](https://discord.com/developers/docs/resources/channel#embed-object)
         * allowedMentions (object, optional):
           A [Allowed-Mentions-Object](https://discord.com/developers/docs/resources/channel#allowed-mentions-object)
+        * components (array, optional): Array
+          of [message components](https://discord.com/developers/docs/interactions/message-components#component-object).
+          ⚠ This will only work, if your webhook is owned by an application.
+
         * Returns `Promise<Message>`  (with all the values
           from [here](https://discord.com/developers/docs/resources/channel#message-object))
 
@@ -74,7 +95,7 @@ Feel free to send me a DM on Discord: `SCDerox#4645`
 
 # Contributing
 
-Feel free to create any issues and PRs in our [github repository](https://github.com/SCDerox/simple-discord-webhooks) if you
-want to contribute.
+Feel free to create any issues and PRs in our [github repository](https://github.com/SCDerox/simple-discord-webhooks) if
+you want to contribute.
 
 © Simon Csaba, 22021 | mail[at]scderox.de

@@ -19,11 +19,12 @@ class Message {
         return true;
     }
 
-    async edit(content, embeds = [], allowedMentions = {}) {
+    async edit(content, embeds = [], allowedMentions = {}, components = []) {
         const res = await centra(this.webhookUrl + `/messages/${this.id}`, 'PATCH').body({
             content: content,
             embeds: embeds,
-            allowed_mentions: allowedMentions
+            allowed_mentions: allowedMentions,
+            components
         })
             .header('Content-Type', 'application/json')
             .send('form');
