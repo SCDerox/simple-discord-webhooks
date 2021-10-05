@@ -1,12 +1,17 @@
 {
   "name": "simple-discord-webhooks",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "Webhook.js",
   "description": "Very simple package to send, edit and delete Discord Webhook Messages",
   "scripts": {
     "test": "node test/test.js"
   },
-  "keywords": ["discord", "discord-webhook", "webhook", "webhooks"],
+  "keywords": [
+    "discord",
+    "discord-webhook",
+    "webhook",
+    "webhooks"
+  ],
   "author": "SCDerox <mail@scderox.de>",
   "license": "MIT",
   "homepage": "https://github.com/SCDerox/simple-discord-webhooks",
