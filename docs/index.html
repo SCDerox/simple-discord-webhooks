@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>simple-discord-webhooks Documentation</title>
+    
+    
+    
+    
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,700" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/main.css">
+
+    
+    <script>
+    var config = {"monospaceLinks":false,"cleverLinks":false,"meta":{"title":"simple-discord-webhooks Documentation"},"default":{"includeDate":false},"applicationName":"simple-discord-webhooks"};
+    </script>
+    
+
+    
+</head>
+<body>
+<div id="wrap" class="clearfix">
+    
+<div class="navigation">
+    <h3 class="applicationName"><a href="index.html">simple-discord-webhooks</a></h3>
+    <button id="menuToggle" class="btn btn-link btn-lg menu-toggle">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+    </button>
+    <div class="search">
+        <input id="search" type="text" class="form-control input-md" placeholder="Search...">
+    </div>
+    <ul class="list">
+    
+    
+        <li class="item" data-name="Message">
+            <span class="title  ">
+                
+                
+                    <a href="Message.html">Message</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="Message#delete"><a href="Message.html#delete">delete</a></li>
+            
+                <li class="parent  " data-name="Message#edit"><a href="Message.html#edit">edit</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+        <li class="item" data-name="Webhook">
+            <span class="title  ">
+                
+                
+                    <a href="Webhook.html">Webhook</a>
+                
+            </span>
+            
+            <ul class="members itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="typedefs itemMembers">
+            
+            </ul>
+            
+            <ul class="methods itemMembers">
+            
+            <span class="subtitle">Methods</span>
+            
+                <li class="parent  " data-name="Webhook#delete"><a href="Webhook.html#delete">delete</a></li>
+            
+                <li class="parent  " data-name="Webhook#edit"><a href="Webhook.html#edit">edit</a></li>
+            
+                <li class="parent  " data-name="Webhook#fetchMessage"><a href="Webhook.html#fetchMessage">fetchMessage</a></li>
+            
+                <li class="parent  " data-name="Webhook#resolveMessageID"><a href="Webhook.html#resolveMessageID">resolveMessageID</a></li>
+            
+                <li class="parent  " data-name="Webhook#send"><a href="Webhook.html#send">send</a></li>
+            
+            </ul>
+            
+            <ul class="events itemMembers">
+            
+            </ul>
+            
+        </li>
+    
+    </ul>
+</div>
+
+    <div class="main">
+        <h1 class="page-title" data-filename="index.html">Index</h1>
+        
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article class="readme content-size"><h1>simple-discord-webhooks</h1>
+<p align="center"><a target="_blank" href="https://nodei.co/npm/simple-discord-webhooks/"><img alt="npm package stats" src="https://nodei.co/npm/simple-discord-webhooks.png"></a></p>
+<p align="center"><a target="_blank" href="https://github.com/scderox/simple-discord-webhooks?sponsor=1">&hearts; Sponsor</a> or <a target="_blank" href="https://github.com/SCDerox/simple-discord-webhooks">★ Star</a></p>
+<h1>Features</h1>
+<ul>
+<li>Send webhook messages</li>
+<li>Edit webhook messages</li>
+<li>Delete webhook messages</li>
+<li>Fetch webhook messages</li>
+<li>Delete and edit webhooks</li>
+<li>Support for custom avatarUrl and username per message</li>
+<li>Support for <a target="_blank" href="https://discord.com/developers/docs/resources/channel#embed-object">Embed-Objects</a></li>
+<li>Support for <a target="_blank" href="https://discord.com/developers/docs/resources/channel#allowed-mentions-object">Allowed-Mentions-Object</a></li>
+<li>Support for <a target="_blank" href="https://discord.com/developers/docs/interactions/message-components#component-object">Message-Component-Object</a>. ⚠ This will only work, if your webhook is owned by an application.</li>
+</ul>
+<h1>Install from <a target="_blank" href="https://www.npmjs.com/package/simple-discord-webhooks">NPM</a></h1>
+<p><code>$ npm i simple-discord-webhooks --save</code></p>
+<h2>Changelog</h2>
+<p>You can find the changelog <a href="CHANGELOG.md">here</a>.</p>
+<h1>Example Usage</h1>
+<pre class="prettyprint source lang-js"><code>const {Webhook} = require('simple-discord-webhooks');
+
+const webhook = new Webhook('https://discord.com/api/webhooks/820304489637871657/QPZWXNS6wUsQ7iKA-Sm7YDIODCbxk60WNeRDoPtEOxZaMvlqbrM_1LQ_LVZHMNhbdz6N');
+
+webhook.send('This message should get edited (hopefully) soon').then(async (result) => {
+    setTimeout(async () => {
+        await result.edit('And should get deleted (hopefully) soon');
+        console.log('Successfully edited send message!');
+    }, 3000);
+    setTimeout(async () => {
+        await result.delete();
+        console.log('Successfully deleted send message!');
+    }, 6000);
+});
+
+const message = webhook.resolveMessageID('820311219432194068');
+message.edit('Hello there!').then(() => console.log('Edited message'))
+</code></pre>
+<h1>API</h1>
+<p>Please refer to the <a target="_blank" href="https://scderox.github.io/simple-discord-webhooks/">online documentation</a>.</p>
+<h1>Questions or suggestions?</h1>
+<p>Please create <a target="_blank" href="https://github.com/SCDerox/simple-discord-webhooks/discussions">a discussion</a> on Github.</p>
+<h1>Contributing</h1>
+<p>Feel free to create any issues and PRs in our <a target="_blank" href="https://github.com/SCDerox/simple-discord-webhooks">github repository</a> if
+you want to contribute.</p>
+<p>© Simon Csaba, 22021 | mail[at]scderox.de</p></article>
+    </section>
+
+
+
+
+
+
+        
+
+        <footer class="content-size">
+            <div class="footer">
+                Documentation generated by <a target="_blank" href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
+            </div>
+        </footer>
+    </div>
+</div>
+<script>prettyPrint();</script>
+<script src="scripts/main.js"></script>
+
+
+</body>
+</html>
