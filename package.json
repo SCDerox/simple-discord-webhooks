@@ -1,6 +1,6 @@
 {
   "name": "simple-discord-webhooks",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "Webhook.js",
   "description": "Very simple package to send, edit and delete Discord Webhook Messages",
   "scripts": {
@@ -14,7 +14,7 @@
   ],
   "author": "SCDerox <mail@scderox.de>",
   "license": "MIT",
-  "homepage": "https://github.com/SCDerox/simple-discord-webhooks",
+  "homepage": "https://scderox.github.io/simple-discord-webhooks/",
   "maintainers": [
     "SCDerox <mail@scderox.de>"
   ],
@@ -22,10 +22,23 @@
     "type": "git",
     "url": "git+https://github.com/SCDerox/simple-discord-webhooks"
   },
+  "funding": [
+    "https://github.com/scderox/simple-discord-webhooks?sponsor=1",
+    "https://paypal.me/therealscderox",
+    "https://bunq.me/scderox",
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/scnetwork"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/SCDerox/simple-discord-webhooks"
   },
   "dependencies": {
     "@aero/centra": "^1.0.6"
+  },
+  "devDependencies": {
+    "@pixi/jsdoc-template": "^2.6.0",
+    "jsdoc": "^3.6.7"
   }
 }
