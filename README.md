@@ -19,6 +19,7 @@
 `$ npm i simple-discord-webhooks --save`
 
 ## Changelog
+You can find the changelog [here](CHANGELOG.md). 
 
 # Example Usage
 
@@ -91,7 +92,7 @@ message.edit('Hello there!').then(() => console.log('Edited message'))
 
 # Questions or suggestions?
 
-Feel free to send me a DM on Discord: `SCDerox#4645`
+Please create [a discussion](https://github.com/SCDerox/simple-discord-webhooks/discussions) on Github.
 
 # Contributing
 
