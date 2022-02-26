@@ -34,7 +34,7 @@ class Webhook {
             tts: tts,
             embeds: embeds,
             allowed_mentions: allowedMentions,
-            components
+            components: components
         })
             .header('Content-Type', 'application/json')
             .send('form');
