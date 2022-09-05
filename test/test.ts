@@ -1,8 +1,8 @@
-const {Webhook} = require('../Webhook');
+const {Webhook} = require('../src/index');
 
 const webhook = new Webhook(process.env.WEBHOOK_URL);
 
-webhook.fetchMessage('895006405122224169').then(m => {
+webhook.fetchMessage('1016274891483390025').then(m => {
     console.log(m.content)
 })
 
@@ -10,7 +10,7 @@ webhook.send('This message should get edited (hopefully) soon').then(async (resu
     // return webhook.delete();
     console.log('Successfully send new message!');
 
-    await webhook.resolveMessageID('820311219432194068').edit(`I got edited!`);
+    await webhook.resolveMessageID('8201311219432194068').edit(`I got edited!`);
     console.log('Successfully resolved messageID and edited message!');
 
     // Use https://base64.guru/converter/encode/image or https://www.npmjs.com/package/filetobase64 (not tested) to generate a base64 string of a image

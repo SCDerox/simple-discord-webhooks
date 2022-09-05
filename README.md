@@ -5,6 +5,7 @@
 
 # Features
 
+* New: TypeScript support
 * Send webhook messages
 * Edit webhook messages
 * Delete webhook messages
@@ -56,4 +57,4 @@ Please create [a discussion](https://github.com/SCDerox/simple-discord-webhooks/
 Feel free to create any issues and PRs in our [github repository](https://github.com/SCDerox/simple-discord-webhooks) if
 you want to contribute.
 
-© Simon Csaba, 22021 | mail[at]scderox.de
+© Simon Csaba, 2022 | mail[at]scderox.de

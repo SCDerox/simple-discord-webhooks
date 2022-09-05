@@ -1,17 +1,24 @@
-const centra = require('@aero/centra');
-const {Message} = require('./Message');
+import {WebhookError} from "./WebhookError";
+import {Message} from './Message'
+import {APIActionRowComponent, APIAllowedMentions, APIEmbed, APIMessageActionRowComponent} from 'discord-api-types/v10'
+
+const centra = require('centra')
 
 /**
  * Represents a webhook
  */
-class Webhook {
+export class Webhook {
+    url: URL;
+    username?: String;
+    avatarUrl?: String;
+
     /**
      * Represents a new webhook
      * @param {URL} url Webhook-URL
      * @param {String} username Username of the webhook
      * @param {URL} avatarUrl URL to a avatar
      */
-    constructor(url, username = null, avatarUrl = null) {
+    constructor(url: URL, username?: String, avatarUrl?: String) {
         this.url = url;
         this.username = username;
         this.avatarUrl = avatarUrl;
@@ -20,13 +27,13 @@ class Webhook {
     /**
      * Creates a new message as the webhook
      * @param {String} content Content of this message
-     * @param {Array<Object>} embeds  Array of [Embed-Objects](https://discord.com/developers/docs/resources/channel#embed-object)
-     * @param {Object} allowedMentions  [Allowed-Mentions-Object](https://discord.com/developers/docs/resources/channel#allowed-mentions-object)
-     * @param {Boolean} tts If enabled, discord will read out the messages to everyone who hase this channel open
-     * @param {Array} components  [Message-Component-Object](https://discord.com/developers/docs/interactions/message-components#component-object). ⚠ This will only work, if your webhook is owned by an application.
+     * @param {APIEmbed} embeds Array of [embeds](https://discord-api-types.dev/api/discord-api-types-v10/interface/APIEmbed) attached to this message
+     * @param {Object} allowedMentions  [Allowed-Mentions-Object](https://discord-api-types.dev/api/discord-api-types-v10/interface/APIAllowedMentions)
+     * @param {Boolean} tts If enabled, discord will read out the messages to everyone who has this channel open
+     * @param {Array} components  Array of [Message-Component-Action-Rows](https://discord-api-types.dev/api/discord-api-types-v10/interface/APIActionRowComponent). ⚠ Most components will only work, if the webhook is owned by an application.
      * @return {Promise<Message>} New message
      */
-    async send(content, embeds = [], allowedMentions = {}, tts = false, components = []) {
+    async send(content: String, embeds: APIEmbed[] = [], allowedMentions: APIAllowedMentions = {}, tts = false, components: APIActionRowComponent<APIMessageActionRowComponent>[] = []) {
         const res = await centra(this.url + '?wait=true', 'POST').body({
             content: content,
             username: this.username,
@@ -37,8 +44,8 @@ class Webhook {
             components
         })
             .header('Content-Type', 'application/json')
-            .send('form');
-        if (res.statusCode !== 200) throw new Error(`Something went wrong while sending while sending the webhook ${this.url}. Here is the answer from discord: ` + res.body.toString())
+            .send();
+        if (res.statusCode !== 200) throw new WebhookError(JSON.parse(res.body.toString()));
         return new Message(JSON.parse(res.body.toString()), this.url);
     }
 
@@ -48,14 +55,14 @@ class Webhook {
      * @param {String} base64Avatar [Base64](https://en.wikipedia.org/wiki/Base64)-String of your image. If you don't know how to use this, please google Image to Base64 nodejs or File to Base 64 if you have an image file.
      * @return {Promise<void>}
      */
-    async edit(name = null, base64Avatar = null) {
+    async edit(name?: String, base64Avatar?: String) {
         const res = await centra(this.url, 'PATCH').body({
             name,
             avatar: base64Avatar ? `data:image/jpeg;base64,${base64Avatar}` : null
         })
             .header('Content-Type', 'application/json')
-            .send('form');
-        if (res.statusCode !== 200) throw new Error(`Something went wrong while sending while sending the webhook ${this.url}. Here is the answer from discord: `+ res.body.toString());
+            .send();
+        if (res.statusCode !== 200) throw new WebhookError(JSON.parse(res.body.toString()));
     }
 
     /**
@@ -63,8 +70,8 @@ class Webhook {
      * @return {Promise}
      */
     async delete() {
-        const res = await centra(this.url, 'DELETE').body().send('form');
-        if (res.statusCode !== 204) throw new Error(`Something went wrong while sending while sending the webhook ${this.url}. Here is the answer from discord: ` + res.body.toString());
+        const res = await centra(this.url, 'DELETE').send();
+        if (res.statusCode !== 204) throw new WebhookError(JSON.parse(res.body.toString()));
     }
 
     /**
@@ -74,13 +81,13 @@ class Webhook {
      */
     async fetchMessage(id) {
         const res = await centra(this.url + `/messages/${id}`, 'GET')
-            .send('form');
-        if (res.statusCode !== 200) throw new Error(`Something went wrong while sending while sending the webhook ${this.url}. Here is the answer from discord: ` + res.body.toString());
+            .send();
+        if (res.statusCode !== 200) throw new WebhookError(JSON.parse(res.body.toString()));
         return new Message(JSON.parse(res.body.toString()), this.url)
     }
 
     /**
-     * Resolves a message by ID (will not include any content of this message. Only use this if you want to edit or delate already send messages without having to fetch the message again
+     * Resolves a message by ID (will not include any content of this message. Only use this if you want to edit or delete already send messages without having to fetch the message again
      * @param messageID
      * @return {Message}
      */
@@ -88,5 +95,3 @@ class Webhook {
         return new Message({id: messageID}, this.url);
     }
 }
-
-module.exports.Webhook = Webhook;
