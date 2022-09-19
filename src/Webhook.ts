@@ -1,6 +1,6 @@
 import {WebhookError} from "./WebhookError";
 import {Message} from './Message'
-import {APIActionRowComponent, APIAllowedMentions, APIEmbed, APIMessageActionRowComponent} from 'discord-api-types/v10'
+import {APIActionRowComponent, APIAllowedMentions, APIEmbed, APIMessageActionRowComponent, APIWebhook} from 'discord-api-types/v10'
 
 const centra = require('centra')
 
@@ -22,6 +22,16 @@ export class Webhook {
         this.url = url;
         this.username = username;
         this.avatarUrl = avatarUrl;
+    }
+
+    /**
+     * Gets information about the webhook.
+     * @return {Promise<APIWebhook>}
+     */
+     async get() {
+        const res = await centra(this.url, 'GET').send();
+        if (res.statusCode !== 200) throw new WebhookError(JSON.parse(res.body.toString()));
+        return JSON.parse(res.body.toString());
     }
 
     /**
