@@ -16,8 +16,12 @@
     "excludePattern": "(node_modules|docs)"
   },
   "plugins": [
+    "jsdoc-plugin-typescript",
     "plugins/markdown"
   ],
+  "typescript": {
+    "moduleRoot": "src"
+  },
   "opts": {
     "encoding": "utf8",
     "destination": "./docs",

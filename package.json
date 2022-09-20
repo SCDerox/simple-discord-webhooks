@@ -44,7 +44,8 @@
   },
   "devDependencies": {
     "@pixi/jsdoc-template": "2.6.0",
+    "@types/centra": "2.2.0",
     "jsdoc": "3.6.11",
-    "@types/centra": "2.2.0"
+    "jsdoc-plugin-typescript": "2.2.0"
   }
 }

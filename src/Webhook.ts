@@ -1,6 +1,12 @@
 import {WebhookError} from "./WebhookError";
 import {Message} from './Message'
-import {APIActionRowComponent, APIAllowedMentions, APIEmbed, APIMessageActionRowComponent, APIWebhook} from 'discord-api-types/v10'
+import {
+    APIActionRowComponent,
+    APIAllowedMentions,
+    APIEmbed,
+    APIMessageActionRowComponent,
+    APIWebhook
+} from 'discord-api-types/v10'
 
 const centra = require('centra')
 
@@ -76,7 +82,7 @@ export class Webhook {
     }
 
     /**
-     * Deletes this message
+     * Deletes this webhook
      * @return {Promise}
      */
     async delete() {
