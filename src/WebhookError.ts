@@ -11,7 +11,7 @@ export class WebhookError extends Error implements RESTError {
     message: string;
 
     constructor(data: APIError) {
-        super('Error:' + data.message);
+        super(`Error: ${data.message}`);
         this.code = data.code;
         this.message = data.message;
         Object.setPrototypeOf(this, Webhook.prototype);
